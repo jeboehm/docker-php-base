@@ -1,10 +1,6 @@
 FROM php:7.1-fpm-alpine
 MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
 
-ENV \
-    PHP_REDIS_VERSION=3.1.0 \
-    PHP_APCU_VERSION=5.1.8
-
 RUN apk add --no-cache \
       freetype \
       libpng \
@@ -34,8 +30,8 @@ RUN apk add --no-cache \
       pdo_mysql \
       zip && \
     pecl install \
-      apcu-${PHP_APCU_VERSION} \
-      redis-${PHP_REDIS_VERSION} && \
+      apcu \
+      redis && \
     docker-php-ext-enable \
       apcu \
       redis && \
