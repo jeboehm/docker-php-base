@@ -45,3 +45,6 @@ RUN apk add --no-cache \
     ln -s /usr/local/bin/php /usr/bin/php
 
 COPY rootfs/ /
+
+CMD ["--help"]
+ENTRYPOINT ["/usr/local/bin/php"]
