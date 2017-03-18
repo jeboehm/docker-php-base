@@ -2,15 +2,16 @@ FROM php:7.1-fpm-alpine
 MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
 
 RUN apk add --no-cache \
+      ca-certificates \
       freetype \
-      libpng \
-      libjpeg-turbo \
       freetype-dev \
-      libmcrypt-dev \
-      libpng-dev \
+      icu-dev \
+      libjpeg-turbo \
       libjpeg-turbo-dev \
-      wget \
-      ca-certificates && \
+      libmcrypt-dev \
+      libpng \
+      libpng-dev \
+      wget && \
     apk add --no-cache --virtual build-deps \
       coreutils \
       build-base \
@@ -24,9 +25,10 @@ RUN apk add --no-cache \
     docker-php-ext-install -j$(nproc) \
       bcmath \
       gd \
-      opcache \
+      intl \
       mcrypt \
       mysqli \
+      opcache \
       pdo_mysql \
       zip && \
     pecl install \
