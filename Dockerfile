@@ -44,5 +44,4 @@ RUN apk add --no-cache \
 
 COPY rootfs/ /
 
-CMD ["--help"]
-ENTRYPOINT ["/usr/local/bin/php"]
+CMD ["/usr/local/sbin/php-fpm"]
