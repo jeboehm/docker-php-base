@@ -5,12 +5,14 @@ RUN apk add --no-cache \
       ca-certificates \
       freetype \
       freetype-dev \
+      git \
       icu-dev \
       libjpeg-turbo \
       libjpeg-turbo-dev \
       libmcrypt-dev \
       libpng \
       libpng-dev \
+      unzip \
       wget && \
     apk add --no-cache --virtual build-deps \
       coreutils \
@@ -40,7 +42,8 @@ RUN apk add --no-cache \
     rm -rf /tmp/pear && \
     apk del build-deps && \
     update-ca-certificates && \
-    ln -s /usr/local/bin/php /usr/bin/php
+    ln -s /usr/local/bin/php /usr/bin/php && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY rootfs/ /
 
