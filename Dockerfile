@@ -46,5 +46,3 @@ RUN apk add --no-cache \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY rootfs/ /
-
-CMD ["/usr/local/sbin/php-fpm"]
