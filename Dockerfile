@@ -12,6 +12,7 @@ RUN apk add --no-cache \
       libmcrypt-dev \
       libpng \
       libpng-dev \
+      pcre-dev \
       unzip \
       wget && \
     apk add --no-cache --virtual build-deps \
