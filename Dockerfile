@@ -12,6 +12,7 @@ RUN apk add --no-cache \
       libmcrypt-dev \
       libpng \
       libpng-dev \
+      mysql-client \
       pcre-dev \
       unzip \
       wget && \
