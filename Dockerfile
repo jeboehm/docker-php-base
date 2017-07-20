@@ -37,7 +37,8 @@ RUN apk add --no-cache \
       zip && \
     pecl install \
       apcu \
-      redis && \
+      redis \
+      xdebug && \
     docker-php-ext-enable \
       apcu \
       redis && \
@@ -46,5 +47,8 @@ RUN apk add --no-cache \
     update-ca-certificates && \
     ln -s /usr/local/bin/php /usr/bin/php && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Note that xdebug is installed but disabled by default.
+# RUN docker-php-ext-enable xdebug
 
 COPY rootfs/ /
