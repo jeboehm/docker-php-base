@@ -1,17 +1,25 @@
-FROM php:7.1-fpm-alpine
-MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
+ARG PHP_VER=7.2
+ARG COMPOSER_VER=1.6.2
+
+FROM composer:${COMPOSER_VER}
+
+FROM php:${PHP_VER}-fpm-alpine
+
+LABEL maintainer="jeff@ressourcenkonflikt.de"
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apk add --no-cache \
       ca-certificates \
+      curl \
       freetype \
       freetype-dev \
       git \
       icu-dev \
       libjpeg-turbo \
       libjpeg-turbo-dev \
-      libmcrypt-dev \
       libpng \
       libpng-dev \
+      make \
       mysql-client \
       pcre-dev \
       unzip \
@@ -30,25 +38,20 @@ RUN apk add --no-cache \
       bcmath \
       gd \
       intl \
-      mcrypt \
       mysqli \
       opcache \
       pdo_mysql \
       zip && \
     pecl install \
       apcu \
-      redis \
-      xdebug && \
+      redis && \
     docker-php-ext-enable \
       apcu \
       redis && \
     rm -rf /tmp/pear && \
     apk del build-deps && \
     update-ca-certificates && \
-    ln -s /usr/local/bin/php /usr/bin/php && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    ln -s /usr/local/bin/php /usr/bin/php
 
-# Note that xdebug is installed but disabled by default.
-# RUN docker-php-ext-enable xdebug
-
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY rootfs/ /
