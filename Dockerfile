@@ -15,6 +15,7 @@ RUN apk add --no-cache \
       freetype-dev \
       git \
       icu-dev \
+      imagemagick \
       libjpeg-turbo \
       libjpeg-turbo-dev \
       libmcrypt-dev \
@@ -26,10 +27,12 @@ RUN apk add --no-cache \
       unzip \
       wget && \
     apk add --no-cache --virtual build-deps \
-      coreutils \
-      build-base \
       autoconf \
-      automake && \
+      automake \
+      build-base \
+      coreutils \
+      imagemagick-dev \
+      libtool && \
     docker-php-ext-configure gd \
       --with-gd \
       --with-freetype-dir=/usr/include/ \
@@ -46,10 +49,12 @@ RUN apk add --no-cache \
       zip && \
     pecl install \
       apcu \
+      imagick \
       redis \
       xdebug && \
     docker-php-ext-enable \
       apcu \
+      imagick \
       redis && \
     rm -rf /tmp/pear && \
     apk del build-deps && \
