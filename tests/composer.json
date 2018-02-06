@@ -1,0 +1,8 @@
+{
+  "require": {
+    "phpunit/phpunit": "@stable"
+  },
+  "scripts": {
+    "test": "phpunit src/"
+  }
+}
