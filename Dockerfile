@@ -1,4 +1,4 @@
-ARG PHP_VER=7.1
+ARG PHP_VER=7.2
 ARG COMPOSER_VER=1.6.2
 
 FROM composer:${COMPOSER_VER}
@@ -18,7 +18,6 @@ RUN apk add --no-cache \
       imagemagick \
       libjpeg-turbo \
       libjpeg-turbo-dev \
-      libmcrypt-dev \
       libpng \
       libpng-dev \
       make \
@@ -42,7 +41,6 @@ RUN apk add --no-cache \
       bcmath \
       gd \
       intl \
-      mcrypt \
       mysqli \
       opcache \
       pdo_mysql \
@@ -50,8 +48,7 @@ RUN apk add --no-cache \
     pecl install \
       apcu \
       imagick \
-      redis \
-      xdebug && \
+      redis && \
     docker-php-ext-enable \
       apcu \
       imagick \
@@ -60,9 +57,6 @@ RUN apk add --no-cache \
     apk del build-deps && \
     update-ca-certificates && \
     ln -s /usr/local/bin/php /usr/bin/php
-
-# Note that xdebug is installed but disabled by default.
-# RUN docker-php-ext-enable xdebug
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY rootfs/ /
