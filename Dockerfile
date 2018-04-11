@@ -49,6 +49,7 @@ RUN apk add --no-cache \
       apcu \
       imagick \
       redis && \
+      xdebug && \
     docker-php-ext-enable \
       apcu \
       imagick \
