@@ -48,7 +48,7 @@ RUN apk add --no-cache \
     pecl install \
       apcu \
       imagick \
-      redis && \
+      redis \
       xdebug && \
     docker-php-ext-enable \
       apcu \
