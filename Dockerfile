@@ -59,5 +59,8 @@ RUN apk add --no-cache \
     update-ca-certificates && \
     ln -s /usr/local/bin/php /usr/bin/php
 
+# Note that xdebug is installed but disabled by default.
+# RUN docker-php-ext-enable xdebug
+
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY rootfs/ /
