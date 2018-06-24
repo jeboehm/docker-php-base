@@ -61,6 +61,10 @@ RUN apk add --no-cache \
     update-ca-certificates && \
     ln -s /usr/local/bin/php /usr/bin/php
 
+# Iconv fix: https://github.com/docker-library/php/issues/240#issuecomment-305038173
+RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
+ENV LD_PRELOAD=/usr/lib/preloadable_libiconv.so
+
 # Note that xdebug is installed but disabled by default.
 # RUN docker-php-ext-enable xdebug
 

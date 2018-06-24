@@ -1,12 +1,7 @@
 sudo: required
 
-env:
-    matrix:
-        - PHP_VER=7.1
-        - PHP_VER=7.2
-
 services:
     - docker
 
 script:
-    - docker run -it --rm -v $PWD/tests:/var/www/html jeboehm/php-base:$PHP_VER /var/www/html/run_tests.sh
+    - make ci
