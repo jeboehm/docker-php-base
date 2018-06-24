@@ -4,5 +4,4 @@ services:
     - docker
 
 script:
-    - docker build -t test .
-    - docker run -it --rm -v $PWD/tests:/var/www/html test /var/www/html/run_tests.sh
+    - make ci
