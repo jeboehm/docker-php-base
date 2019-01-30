@@ -1,5 +1,5 @@
 ARG PHP_VER=7.2
-ARG COMPOSER_VER=1.6.2
+ARG COMPOSER_VER=1.8.3
 
 FROM composer:${COMPOSER_VER}
 
@@ -23,6 +23,7 @@ RUN apk add --no-cache \
       make \
       mysql-client \
       pcre-dev \
+      tzdata \
       unzip \
       wget && \
     apk add --no-cache --virtual build-deps \
