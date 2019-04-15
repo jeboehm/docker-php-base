@@ -62,7 +62,7 @@ RUN apk add --no-cache \
     ln -s /usr/local/bin/php /usr/bin/php
 
 # Iconv fix: https://github.com/docker-library/php/issues/240#issuecomment-305038173
-RUN apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ gnu-libiconv
 ENV LD_PRELOAD=/usr/lib/preloadable_libiconv.so
 
 # Note that xdebug is installed but disabled by default.
