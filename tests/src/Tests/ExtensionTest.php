@@ -15,10 +15,12 @@ class ExtensionTest extends TestCase
         'imagick',
         'intl',
         'openssl',
+        'pcre',
         'PDO',
         'pdo_mysql',
         'pdo_sqlite',
         'redis',
+        'Zend OPcache',
         'zip',
     ];
 
